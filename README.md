@@ -2,7 +2,9 @@
 
 A multi-agent Retrieval-Augmented Generation (RAG) system for answering USMLE-style medical questions from the **MedQA** dataset. The pipeline combines domain-aware query decomposition, medical-domain embeddings, cross-encoder re-ranking, and an ensemble of LLM agents to produce evidence-grounded answers.
 
-> Course project for **Human Centered Natural Langugae Processing**
+📄 **[Read the full paper for a deep dive into our approach, methodology, and results](https://github.com/AkSaini23/Explainable-RAG-Systems/blob/main/PAPER.pdf)**
+
+> Course project for **Human Centered Natural Language Processing**
 
 ---
 
@@ -14,7 +16,9 @@ Three approaches are implemented for comparison:
 
 1. **Simple RAG** — single retrieval + single LLM call (baseline).
 2. **Agentic RAG** — multi-agent pipeline with sub-query decomposition and reranking (main contribution).
-3. **Chunking experiments** — fixed-size, semantic, and **ASCM** (Adaptive Semantic Chunk Modeling) chunkers for ablation.
+3. **Chunking experiments** — fixed-size, semantic, and **ASCM** (Adaptive Semantic Chunking Method) chunkers for ablation. Our ASCM implementation is based on the method proposed by [Fartushny (2026)](https://openreview.net/forum?id=9ph0YwPFR4).
+
+For full details on the design rationale, experiments, and analysis, see our **[paper](https://github.com/AkSaini23/Explainable-RAG-Systems/blob/main/PAPER.pdf)**.
 
 ---
 
@@ -25,7 +29,7 @@ Group10_HCNLP26/
 ├── HCNLP_Group10_Presentation.pdf      # Project presentation
 └── src/
     ├── CHUNKING/                       # Textbook chunking strategies
-    │   ├── ascm_chunker.py             # Adaptive semantic chunking (our method)
+    │   ├── ascm_chunker.py             # Adaptive semantic chunking (based on Fartushny, 2026)
     │   ├── fixed_size_chunking.py      # Fixed-size baseline
     │   └── langchain_semantic_chunking.py
     │
@@ -78,9 +82,27 @@ Each sub-query is retrieved, reranked, and reasoned over in parallel using a `Th
 
 ---
 
-## Acknowledgements
+## 📄 Paper
+
+For a comprehensive understanding of our motivation, methodology, experiments, and findings, please read our full paper:
+
+**[Explainable RAG Systems for Medical Question Answering (PDF)](https://github.com/AkSaini23/Explainable-RAG-Systems/blob/main/PAPER.pdf)**
+
+The paper covers:
+- The limitations of standard RAG on multi-hop clinical reasoning
+- Detailed architecture of the multi-agent pipeline
+- Ablation studies across chunking strategies (fixed-size vs. semantic vs. ASCM)
+- Quantitative results on the MedQA benchmark
+- Qualitative analysis of generated reasoning traces
+
+---
+
+## References & Citations
+
+- Fartushny, E. (2026). *Adaptive Semantic Chunking Method for Medical Retrieval-Augmented Generation Systems.* MathAI 2026 Conference. [https://openreview.net/forum?id=9ph0YwPFR4](https://openreview.net/forum?id=9ph0YwPFR4)
 
 - [MedQA](https://github.com/jind11/MedQA) dataset
 - NCBI [MedCPT](https://huggingface.co/ncbi/MedCPT-Cross-Encoder) cross-encoder
 - [MedEmbed](https://huggingface.co/abhinand/MedEmbed-large-v0.1) embeddings
+- [ASCM chunking method](https://openreview.net/forum?id=9ph0YwPFR4) by Fartushny (2026)
 - LangChain, ChromaDB, and Groq for infrastructure
