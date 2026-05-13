@@ -97,9 +97,7 @@ The paper covers:
 
 ---
 
-## References & Citations
-
-- Fartushny, E. (2026). *Adaptive Semantic Chunking Method for Medical Retrieval-Augmented Generation Systems.* MathAI 2026 Conference. [https://openreview.net/forum?id=9ph0YwPFR4](https://openreview.net/forum?id=9ph0YwPFR4)
+## References
 
 - [MedQA](https://github.com/jind11/MedQA) dataset
 - NCBI [MedCPT](https://huggingface.co/ncbi/MedCPT-Cross-Encoder) cross-encoder
